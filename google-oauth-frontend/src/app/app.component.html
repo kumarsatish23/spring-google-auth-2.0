@@ -1,0 +1,11 @@
+<ng-container *ngIf="!(googleAuthService.user$ | async)">
+  <h2>Login with Google</h2>
+  <div id="google-signin-button"></div> <!-- Button container -->
+</ng-container>
+
+<div *ngIf="googleAuthService.user$ | async as user">
+  <h2>Welcome, {{ user.name }}</h2>
+  <img [src]="user.pictureUrl" alt="User Picture" />
+  <p>Email: {{ user.email }}</p>
+  <button (click)="signOut()">Sign out</button>
+</div>
